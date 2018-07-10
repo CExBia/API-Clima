@@ -7,9 +7,11 @@ app = Flask(__name__)
 def temperatura():
     city_name = request.form('q')
     r = requests.get('https://owm.io/data/2.5/weather?q='+city_name+',uk&appid=18db156f5ef1c6bdad1be1c5072fa282')
-    json_object = r.text
-    return json_object
-    #return render_template('temperatura.html')
+    json_object = r.json()
+    temp_k = float(json_object['main']['temp'])
+    temp_c = (temp_k - 273.15)
+    
+    return render_template('temperatura.html', temp=temp_c)
 
 @app.route('/')
 def index():
