@@ -1,4 +1,4 @@
-Flask==0.10.1
+Flask==0.10.2
 Jinja2==2.6
-Werkzeug==0.10.4
+Werkzeug==0.11
 wsgiref==0.1.2
