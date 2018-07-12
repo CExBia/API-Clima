@@ -4,7 +4,7 @@
 from flask import Flask, request, render_template
 import requests
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 @app.route('/temperatura', methods=['POST'])
 def temperatura():
     city_name = request.form['q']
