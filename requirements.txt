@@ -3,4 +3,4 @@ Flask==0.12.4
 Jinja2==2.6
 Werkzeug==0.11
 Requests==2.19.1
-Anaconda==5.1.0
+
