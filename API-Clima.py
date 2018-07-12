@@ -8,7 +8,7 @@ import os
 app = Flask(__name__, template_folder='templates')
 @app.route('/temperatura', methods=['POST'])
 def temperatura():
-    city_name = request.form['q']
+    city_name = request.form['city']
     r = requests.get('http://api.openweathermap.org/data/2.5/weather?q='+city_name+'&APPID=18db156f5ef1c6bdad1be1c5072fa282')
     json_object = r.json()
     temp_k = float(json_object['main']['temp'])
