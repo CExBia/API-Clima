@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #Acessa api de clima
 from flask import Flask, request, render_template
 import requests
