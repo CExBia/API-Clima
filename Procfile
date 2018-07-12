@@ -1,1 +1,1 @@
-web: python API-Clima:app
+web: python API-Clima.py
