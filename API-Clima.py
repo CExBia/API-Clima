@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #Acessa api de clima
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import requests
 import os
 
@@ -14,7 +14,8 @@ def temperatura():
     temp_k = float(json_object['main']['temp'])
     temp_c = int(temp_k - 273.15)
     
-    return render_template('temperatura.html', temp=temp_c)
+    return jsonify({"fulfillmentMessages":"A temperatura atual é de " + str(temp_c) + " graus"})  
+    #return render_template('temperatura.html', temp=temp_c)
 
 @app.route('/')
 def index():
