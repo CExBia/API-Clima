@@ -20,7 +20,7 @@ def temperatura():
                                               "events": [], "trainingPhrases": [{}], "action": "temperatura.clima",
                                               "outputContexts": [{}], "resetContexts": False, "parameters": [{}],
                                               "messages": [{"plataform": "google","text": "A temperatura é de " + str(temp_c) + "graus"}],
-                                              "defaultResponsePlatforms": [""], "rootFollowupIntentName": True,
+                                              "defaultResponsePlatforms": ["Oi"], "rootFollowupIntentName": True,
                                               "parentFollowupIntentName": "Clima", "followupIntentInfo": [{}]}],
                      "source": "http://tempeclima.heroku.com"}
 
