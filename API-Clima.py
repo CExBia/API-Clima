@@ -13,21 +13,16 @@ def temperatura():
     json_object = r.json()
     temp_k = float(json_object['main']['temp'])
     temp_c = int(temp_k - 273.15)
-    action_js = {"fulfillmentText": "A temperatura é de " + str(temp_c) + " graus",
- "fulfillmentMessages": [{"name": "projects/teste1-4a3c3/agent/sessions/3d906226-5f80-473d-5128-727861320a87/contexts/clima_dialog_params_app_clima",
-                          "displayName":"Clima", "webhookState": "WEBHOOK_ENABLE", "priority": 3,
-                          "isFallback": False, "mlEnabled": True, "mlDisabled": False, "inputContextNames": "",
-                          "events": "", "trainingPhrases": ["Qual a temperatura em São Paulo?"],
-                          "action": "temperatura.clima", "outputContexts": "", "resetContexts": False,
-                          "parameters": "", "messages": "A temperatura é de " + str(temp_c) + " graus",
-                          "defaultResponsePlatforms": [5], "rootFollowupIntentName": "", "parentFollowupIntentName": "",
-                          "followupIntentInfo": "Informa a  temperatura"}], "source": "http://tempeclima.herokuapp.com/",
-                     "payload": {"google": {"expectUserResponse": True,
-                                            "richResponse": {"items": [{"simpleResponse": {"textToSpeech": "A temperatura é de " + str(temp_c) + " graus"}}]}},
-                                 "facebook": {}, "slack": {}},
-                     "outputContexts": [{"name": "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
-                                         "lifespanCount": 5, "parameters": {}}],
-                     "followupEventInput": {"name": "","languageCode": "pt-BR","parameters": {}}}
+    action_js = {"fulfillmentText": "A temperatura é de " + str(temp_c) + "graus",
+                     "fulfillmentMessages": [{"name": "projects/teste1-4a3c3/agent/intents/3b7a1380-cce5-4321-b98e-fbb6230e84c1",
+                                              "displayName": "Clima", "webhookState": "WEBHOOK_STATE_ENABLED", "priority": 5000,
+                                              "isFallback": False, "mlEnabled": True, "mlDisabled": False, "inputContextNames": [],
+                                              "events": [], "trainingPhrases": [{}], "action": "temperatura.clima",
+                                              "outputContexts": [{}], "resetContexts": False, "parameters": [{}],
+                                              "messages": [{"plataform": "google","text": "A temperatura é de " + str(temp_c) + "graus"}],
+                                              "defaultResponsePlatforms": [""], "rootFollowupIntentName": True,
+                                              "parentFollowupIntentName": "Clima", "followupIntentInfo": [{}]}],
+                     "source": "http://tempeclima.heroku.com"}
 
     return jsonify(action_js)  
     #return render_template('temperatura.html', temp=temp_c)
