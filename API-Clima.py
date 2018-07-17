@@ -14,7 +14,7 @@ def temperatura():
     temp_k = float(json_object['main']['temp'])
     temp_c = int(temp_k - 273.15)
     action_js = {"fulfillmentText": "A temperatura é de " + str(temp_c) + " graus",
- "fulfillmentMessages": [{"name": "projects/teste1bia-f1971/agent/intents/a90a3e24-bea5-47aa-be31-2db3818d12a4",
+ "fulfillmentMessages": [{"name": "projects/teste1-4a3c3/agent/sessions/3d906226-5f80-473d-5128-727861320a87/contexts/clima_dialog_params_app_clima",
                           "displayName":"Clima", "webhookState": "WEBHOOK_ENABLE", "priority": 3,
                           "isFallback": False, "mlEnabled": True, "mlDisabled": False, "inputContextNames": "",
                           "events": "", "trainingPhrases": ["Qual a temperatura em São Paulo?"],
