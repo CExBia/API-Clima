@@ -21,7 +21,9 @@ def webhook():
 
         return jsonify({"fulfillmentText": "A temperatura é de " + str(celcius) + "graus"})
     except TypeError:
-        return jsonify({"fulfillmentText": "Não foi possível obter resposta!!"})
+        req = request.get_json(silent=True, force=True)
+        city_name = req.get('geo-city')
+        return jsonify({"fulfillmentText": "Não foi possível obter resposta!!"+city_name})
         
 @app.route('/temperatura', methods=["POST"])
 def temperatura():
