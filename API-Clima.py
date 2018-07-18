@@ -19,7 +19,7 @@ def webhook():
         kelvin = json_object["main"]["temp"]
         celcius = int(float(kelvin) - 273.15)
 
-        return jsonify({"fulfillmentText": "A temperatura é de " + str(celcius) + "graus"})
+        return jsonify({"fulfillmentText": "A temperatura é de " + str(celcius) + " graus"})
     except TypeError:
         return jsonify({"fulfillmentText": "Não foi possível obter resposta!!"})
         
