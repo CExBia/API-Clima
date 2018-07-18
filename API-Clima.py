@@ -20,7 +20,7 @@ def webhook():
 
     return jsonify({"fulfillmentText": "A temperatura é de " + str(celcius) + "graus"})
 
-@app.route('/temperatura')
+@app.route('/temperatura', methods=["POST"])
 def temperatura():
     city_n = request.form["city"]
     r1 = request.get('http://api.openweathermap.org/data/2.5/weather?q='+city_n+'&APPID=18db156f5ef1c6bdad1be1c5072fa282')
