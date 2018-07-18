@@ -26,7 +26,7 @@ def webhook():
 @app.route('/temperatura', methods=["POST"])
 def temperatura():
     city_n = request.form["city"]
-    r1 = request.get('http://api.openweathermap.org/data/2.5/weather?q='+city_n+'&APPID=18db156f5ef1c6bdad1be1c5072fa282')
+    r1 = requests.get('http://api.openweathermap.org/data/2.5/weather?q='+city_n+'&APPID=18db156f5ef1c6bdad1be1c5072fa282')
     json_obj = r1.json()
     temp_k = float(json_obj['main']['temp'])
     temp_c = int(temp_k - 273.15)
