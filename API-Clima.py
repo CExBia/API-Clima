@@ -11,15 +11,18 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=["POST"])
 def webhook():
-    req = request.get_json(silent=True, force=True)
-    city_name = req.get('geo-city')
-    r = requests.get('http://api.openweathermap.org/data/2.5/weather?q='+city_name+'&APPID=18db156f5ef1c6bdad1be1c5072fa282')
-    json_object = r.json()
-    kelvin = json_object["main"]["temp"]
-    celcius = int(float(kelvin) - 273.15)
+    try:
+        req = request.get_json(silent=True, force=True)
+        city_name = req.get('geo-city')
+        r = requests.get('http://api.openweathermap.org/data/2.5/weather?q='+city_name+'&APPID=18db156f5ef1c6bdad1be1c5072fa282')
+        json_object = r.json()
+        kelvin = json_object["main"]["temp"]
+        celcius = int(float(kelvin) - 273.15)
 
-    return jsonify({"fulfillmentText": "A temperatura é de " + str(celcius) + "graus"})
-
+        return jsonify({"fulfillmentText": "A temperatura é de " + str(celcius) + "graus"})
+    except TypeError:
+        return jsonify({"fulfillmentText": "Não foi possível obter resposta!!"})
+        
 @app.route('/temperatura', methods=["POST"])
 def temperatura():
     city_n = request.form["city"]
