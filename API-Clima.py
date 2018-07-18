@@ -4,7 +4,29 @@
 from flask import Flask, request, render_template, jsonify
 import requests
 import os
+import urllib
+import json
 
+app = Flask(__name__)
+
+@app.route('/webhook', methods=["POST"])
+def webhook():
+    req = request.get_json(silent=True, force=True)
+    city_name = req.get('geo-city')
+    r = requests.get('http://api.openweathermap.org/data/2.5/weather?q='+city_name+'&APPID=18db156f5ef1c6bdad1be1c5072fa282')
+    json_object = r.json()
+    kelvin = json_object["main"]["temp"]
+    celcius = int(float(kelvin) - 273.15)
+
+    return jsonify({"fulfillmentText": "A temperatura é de " + str(celcius) + "graus"})
+
+#@app.route('/')
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port,debug=True)
+
+'''
 app = Flask(__name__, template_folder='templates')
 log = app.logger
 
@@ -30,3 +52,4 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)  
     #caso não funcione, coloque ", debug=True)". dessa forma app.run(host='0.0.0.0', port=port)
+'''
